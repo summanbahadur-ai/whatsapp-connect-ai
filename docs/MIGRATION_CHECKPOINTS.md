@@ -99,13 +99,13 @@ database has not changed. No contacts/messages are imported.
 Files: `frontend/` UI copy, lockfile, `next.config.ts`, typed API transport,
 module-availability manifest and browser tests.
 
-1. [ ] Copy UI/components/routes/assets/translations with license; exclude all private/generated files.
-2. [ ] Audit and remove frontend imports of SQL, Better Auth server, workers and business API handlers.
-3. [ ] Configure `/api/**` and `/media/**` rewrites to Java; preserve cookies/raw request bytes.
-4. [ ] Add browser/HTTP tests for proxy health, Set-Cookie, byte integrity and backend unavailability.
-5. [ ] Keep login page visual layout; mark unfinished feature screens unavailable.
-6. [ ] Verify no old-app URL fallback or frontend database/provider credentials.
-7. [ ] Run frontend typecheck/lint/build and Java tests; commit and stop.
+1. [x] Copy UI/components/routes/assets/translations with license; exclude all private/generated files.
+2. [x] Audit and remove frontend imports of SQL, Better Auth server, workers and business API handlers.
+3. [x] Configure `/api/**` and `/media/**` rewrites to Java; preserve cookies/raw request bytes.
+4. [x] Add browser/HTTP tests for proxy health, Set-Cookie, byte integrity and backend unavailability.
+5. [x] Keep login page visual layout; mark unfinished feature screens unavailable.
+6. [x] Verify no old-app URL fallback or frontend database/provider credentials.
+7. [ ] Automated checks passed; user review and explicit CP03 commit/push approval pending. Stop before CP04.
 
 Manual gate: frontend on 3001 renders the existing login UI; a browser request
 reaches Java on 8081. Signing in is not claimed until CP04/05 pass.

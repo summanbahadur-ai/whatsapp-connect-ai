@@ -1,0 +1,1 @@
+export interface ContactImportResult { imported:number; skipped:number; invalidPhone:number; failed:number; tagsAssigned:number; failedDetails:{phone:string;name?:string;reason:string}[]; skippedNames:string[] }

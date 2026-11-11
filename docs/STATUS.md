@@ -1,31 +1,14 @@
 # Migration status and resume instructions
 
-Updated: 11 November 2026.
+CP03 accepted by user on 11 November 2026. User authorized local commit/merge into
+main and proceeding to CP04. Verification rerun passed: 7 unit/boundary tests,
+6 browser tests, typecheck/build, lint exit0 with60 legacy warnings.
+A separate question about pushing main to GitHub is pending; do not push without
+that answer. ALWAYS ask before each future commit and push.
 
-## Git approval requirement
-ALWAYS ask before each future commit and push. User explicitly approved CP02
-commit, merge into main and push on 11 November 2026. This approval covers CP02
-integration only. CP03 commit/push needs new approval.
-
-## Accepted stable checkpoint
-CP02 PostgreSQL foundation accepted. CP01 main base: 0fa9f92.
-User completed pgAdmin setup, Java startup with database profile, health UP,
-and confirmed identity=5/public=38 tables. No imported customer data.
-Automated verification: scripts/maven.ps1 verify, BUILD SUCCESS, 26 tests,
-zero failures/errors/skips. Original database remains separate.
-
-See docs/checkpoints/CP02.md and database/README.md.
-SQL changes always require incremental Flyway migrations and updated database/schema.sql.
-
-## Current work
-Integrate approved CP02 into main and push; then create
-feature/cp03-frontend-java-transport from main. CP03 is authorized:
-preserve the existing frontend, remove TypeScript backend dependencies, connect
-same-origin API/media transport to Java, test it, and stop for review.
-Login/signup remain unavailable until their own checkpoints.
-Do not implement CP04 automatically. Do not commit/push CP03 without permission.
-
-## Resume
-Read AGENTS.md, this status, the specification/security architecture and CP03 in
-docs/MIGRATION_CHECKPOINTS.md. Record actual results and pending manual tests.
-Never copy source .env files, credentials, runtime storage or database contents.
+Next authorized work: CP04 Java signup and owner provisioning. Create
+feature/cp04-java-signup from merged main. Implement signup/CSRF/password hashing,
+atomic credentials/account/profile provisioning and original signup UI wiring.
+Stop after CP04 tests/manual review. Login/session behavior remains CP05.
+No default old-app API or database fallback. See database/README.md and CP04 plan.
+Every SQL structure change requires a new migration plus updated database/schema.sql.

@@ -11,8 +11,8 @@ in `docs/MIGRATION_CHECKPOINTS.md` before implementing.
 - Do not modify the original repo or `omni_connect` database. Use separate data,
   roles, runtime storage and provider configuration in this project.
 - Never copy secrets, `.env.local`, uploads or customer data from the source.
-- CP01 Java foundation now exists; read docs/STATUS.md for the actual stable state.
-  Do not claim frontend, database, login or later modules are implemented.
+- CP02 Java/PostgreSQL foundation is accepted; read docs/STATUS.md for current CP03 work.
+  Describe migrated modules precisely; preserved/gated UI does not mean its Java API exists.
 - Read relevant installed Next.js guides before frontend implementation; preserve
   framework-generated assistant instructions if Next adds them later.
 
