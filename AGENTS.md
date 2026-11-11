@@ -11,7 +11,11 @@ in `docs/MIGRATION_CHECKPOINTS.md` before implementing.
 - Do not modify the original repo or `omni_connect` database. Use separate data,
   roles, runtime storage and provider configuration in this project.
 - Never copy secrets, `.env.local`, uploads or customer data from the source.
-- No executable Java/Next scaffold exists at the initial documentation checkpoint.
-  Do not claim the documented future file tree or commands are already implemented.
+- CP01 Java foundation now exists; read docs/STATUS.md for the actual stable state.
+  Do not claim frontend, database, login or later modules are implemented.
 - Read relevant installed Next.js guides before frontend implementation; preserve
   framework-generated assistant instructions if Next adds them later.
+
+## Git approval requirement
+
+User preference: ALWAYS ask for explicit approval before every future Git commit and before every future push. Checkpoint instructions do not grant automatic permission. The user explicitly authorized the current CP01 commit and push on 11 November 2026; that approval does not carry forward to later checkpoints.

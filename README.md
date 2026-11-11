@@ -3,8 +3,9 @@
 Separate project specification for a Java 25 / Spring Boot backend, the existing
 React / TypeScript / Next.js interface, and PostgreSQL.
 
-**Status: specification and directory structure only. No runnable application has
-been implemented here yet.** The working Omni Connect application is unchanged.
+**Status: CP01 Java backend foundation is implemented and verified; user review
+is pending.** Frontend, login and database migration have not started. The working
+Omni Connect application is unchanged.
 
 Read these in order:
 
@@ -26,3 +27,17 @@ are migrated individually. Stop at every checkpoint for tests and user review.
 
 The source is the MIT-licensed Omni Connect continuation of ArnasDon/wacrm.
 Retain the original license and copyright when copying the frontend or other code.
+
+## Run the CP01 backend
+
+From PowerShell in this folder:
+
+```powershell
+.\scripts\maven.ps1 verify
+.\scripts\maven.ps1 spring-boot:run
+```
+
+Health: <http://localhost:8081/actuator/health> (200, UP). Protected API:
+<http://localhost:8081/api/account> (401, expected). No login/UI exists yet.
+See [backend instructions](backend/README.md) and [CP01 evidence](docs/checkpoints/CP01.md).
+Stop here for testing; CP02 requires your acceptance/continue.

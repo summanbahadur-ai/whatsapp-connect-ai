@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: whatsapp-connect-backend
+  main:
+    banner-mode: "off"
+  autoconfigure:
+    # CP01 has no users/login yet. Never generate a default development user.
+    exclude: org.springframework.boot.security.autoconfigure.UserDetailsServiceAutoConfiguration
+
+server:
+  address: ${WC_BIND_ADDRESS:127.0.0.1}
+  port: ${PORT:8081}
+  shutdown: graceful
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+      discovery:
+        enabled: false
+  endpoint:
+    health:
+      show-details: never
+      show-components: never
+      probes:
+        enabled: true

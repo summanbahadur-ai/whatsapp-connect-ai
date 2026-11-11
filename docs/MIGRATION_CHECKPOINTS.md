@@ -19,6 +19,9 @@ delegate or start multiple modules in parallel unless the user asks for it.
 
 ## Global constraints and gate protocol
 
+**Git approval: always ask before each future commit and each future push. The
+current CP01 commit/push is explicitly authorized; later checkpoints are not.**
+
 - Java release **25**; no preview features or TypeScript business backend.
 - New project `D:\whatsapp-connect-ai`; new DB `whatsapp_connect_ai`.
 - Never mutate the original repo, `omni_connect`, old uploads or old Meta callback.
@@ -53,7 +56,7 @@ delegate or start multiple modules in parallel unless the user asks for it.
 - [x] Inventory the source working tree, routes/pages, SQL tables and module types.
 - [x] Write architecture, security, setup and checkpoint specifications.
 - [x] Create a separate initial folder tree and safe reference snapshots.
-- [ ] User reviews architecture and fresh-data/database assumptions.
+- [x] User authorized CP01 implementation; separate-database credentials remain to be confirmed at CP02.
 
 Gate: documents/links/inventories are valid; no application/runtime/database claims.
 Stop: review the documents before any code generation.
@@ -63,13 +66,13 @@ Stop: review the documents before any code generation.
 Files: `backend/pom.xml`, Maven Wrapper, application class, security/health
 configuration, initial tests, root ignore rules and environment templates.
 
-1. [ ] Check JDK/Javac 25, Node/npm, PostgreSQL, Git and free ports; record versions.
-2. [ ] Initialize a new local Git repository (no remote publishing), preserve the source license, then pin Boot/dependencies and Maven Wrapper; set compiler release to 25.
-3. [ ] Add a failing startup/health test and a protected-route unauthorized test.
-4. [ ] Generate the smallest Java application that passes; no business stubs.
-5. [ ] Restrict exposed Actuator data; enable only health/readiness as appropriate.
-6. [ ] Run wrapper version, `mvnw.cmd verify` and Java startup on 8081.
-7. [ ] Record results, commit and stop.
+1. [x] Check JDK/Javac 25, Node/npm, PostgreSQL, Git and free ports; record versions.
+2. [x] Initialize a new local Git repository (no remote publishing), preserve the source license, then pin Boot/dependencies and Maven Wrapper; set compiler release to 25.
+3. [x] Add a failing startup/health test and a protected-route unauthorized test.
+4. [x] Generate the smallest Java application that passes; no business stubs.
+5. [x] Restrict exposed Actuator data; enable only health/readiness as appropriate.
+6. [x] Run wrapper version, `mvnw.cmd verify` and Java startup on 8081.
+7. [x] Record results, commit and stop.
 
 Manual gate: health returns 200 without sensitive configuration; protected API
 returns 401. A successful compile alone is not a database/auth checkpoint.

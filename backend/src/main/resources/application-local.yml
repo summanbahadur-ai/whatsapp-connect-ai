@@ -1,0 +1,4 @@
+# No database or provider credentials are required for CP01.
+spring:
+  lifecycle:
+    timeout-per-shutdown-phase: 10s

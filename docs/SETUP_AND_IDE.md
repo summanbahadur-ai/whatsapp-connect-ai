@@ -1,3 +1,7 @@
+> CP01 update: backend commands now work using the installed JDK 25. Prefer
+> `scripts/maven.ps1` from the root; it avoids the system Java 8 and caches on D:.
+> Frontend/database commands below remain future checkpoints. See backend/README.md.
+
 # Tools, IDE and running both projects
 
 This is an installation/run plan, not a record that tools were installed. Actual

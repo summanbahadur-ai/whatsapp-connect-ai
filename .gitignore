@@ -23,7 +23,8 @@ test-results/
 
 # Editors and OS files
 .idea/
-.vscode/
+.vscode/*
+!.vscode/extensions.json
 Thumbs.db
 .DS_Store
 ~$*

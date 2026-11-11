@@ -2,63 +2,53 @@
 
 Updated: 11 November 2026.
 
-## Current state
+## Git approval requirement
 
-- Specification and initial folder layout prepared.
-- No frontend copied, no Java application generated, no dependencies installed.
-- No new Git repository initialized or remote repository published yet.
-- No new PostgreSQL database/roles/migrations executed.
-- No customer data, secrets, uploads or source runtime configuration copied.
-- No old application behavior, original Git branch or Meta callback changed.
-- No application tests/builds have run in this new project: there is no app yet.
-- CP00 documentation inventory is complete; architecture choices remain proposed
-  until user review. All implementation checkpoints are pending.
+User preference: ALWAYS ask for explicit approval before every future Git commit and before every future push. Checkpoint instructions do not grant automatic permission. The user explicitly authorized the current CP01 commit and push on 11 November 2026; that approval does not carry forward to later checkpoints.
 
-## Documentation verification
+## Current stable checkpoint
 
-The source baseline contains 90 API route files, 151 documented API operations,
-24 page files, 41 tables and 122 source test files. Prepared documentation passed
-local link checks, OpenAPI parser validation, explicit handler coverage, the
-CP00–CP30 checkpoint-sequence check and private-configuration/credential-pattern
-checks. These are documentation checks, not Java implementation or runtime tests.
+**CP01 Java foundation implemented and verified; user review pending.**
 
-## Next action
+- Java 25.0.1, Spring Boot 4.1.2, Maven 3.9.12, Wrapper 3.3.4.
+- Local repository initialized; branch `feature/cp01-java-foundation`.
+- Packaged Java application runs at http://localhost:8081.
+- Public health/liveness/readiness; all other paths denied; no default login/user.
+- Eight real-HTTP integration tests pass through Maven Failsafe during verify.
+- VS Code extension recommendations and ignored machine-local JDK settings prepared.
+- No frontend copied, no database provisioned/queried, no authentication module yet.
+- No provider calls, customer messages, secret copying or original project changes.
+- No remote publishing or deployment performed.
 
-Review `SPECIFICATION.md`, `ARCHITECTURE.md` and `DATABASE_AND_SECURITY.md`.
-Confirm the fresh separate database/account assumption, then start **CP01 only**
-from `MIGRATION_CHECKPOINTS.md`. Inspect tools and create the foundational Java/UI
-scaffold in small checkpoints. Stop after that checkpoint's tests and review.
+See [CP01 evidence and manual tests](checkpoints/CP01.md).
 
-## Resume in another conversation
+## Test this checkpoint
 
-Open `D:\whatsapp-connect-ai` as the workspace and say:
+1. Open http://localhost:8081/actuator/health: expect HTTP 200 and status UP.
+2. Open http://localhost:8081/api/account: expect HTTP 401 and unauthorized JSON.
+3. Open D:\whatsapp-connect-ai in VS Code and inspect backend/pom.xml.
+4. In its terminal, run `.\scripts\maven.ps1 verify`: expect eight tests, no failures.
 
-> Read README.md and docs/STATUS.md, then the referenced specification and
-> checkpoint plan. Continue only the next approved checkpoint, test it, update
-> the status and stop for my review. Do not modify the old project/database.
+There is no frontend/login screen at CP01. That is scheduled later; an unauthorized
+API response is expected here. The original application's UI remains separate.
 
-## Checkpoint evidence template
+## Next permitted checkpoint
 
-Create `docs/checkpoints/CPxx.md` after each checkpoint with:
+**CP02: separate PostgreSQL foundation**, only after the user accepts CP01 and
+says to continue. Do not run CP02 automatically. It will confirm private new-database
+credentials and create whatsapp_connect_ai with appropriate roles and migrations.
+Never point it at the working omni_connect database or execute reference SQL blindly.
 
-```text
-Checkpoint:
-Date:
-Source baseline/version:
-Started from commit:
-Files/features changed:
-Schema migration versions:
-Commands and exit codes:
-Automated results:
-Manual user steps and observed results:
-Known limitations / unfinished screens:
-Provider side effects (if any):
-Rollback / compatibility notes:
-Stable commit/tag:
-User review: pending / accepted / changes requested
-Next permitted checkpoint:
-```
+## Resume
 
-Record failing checks honestly. Never label a checkpoint accepted before the user
-has tested/reviewed it. Do not store credentials, reset links or customer payloads
-in evidence files.
+Open this directory as the workspace. Read AGENTS.md, this file and
+docs/checkpoints/CP01.md, then the specification/security design and CP02 plan.
+Keep work within one approved checkpoint. Test, record results, commit and stop.
+Record user review honestly; do not mark it accepted before receiving acceptance.
+
+## Reference inventory
+
+The source baseline contains 90 API route files, 151 documented operations,
+24 pages, 41 source tables and 122 source test files. CP00 documentation validation
+covered links, OpenAPI, handler coverage and private-configuration patterns. These
+are inventory facts, not features already migrated to Java.
