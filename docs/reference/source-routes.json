@@ -1,0 +1,685 @@
+[
+  {
+    "file": "src/app/api/account/api-keys/route.ts",
+    "route": "/api/account/api-keys",
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "src/app/api/account/api-keys/[id]/route.ts",
+    "route": "/api/account/api-keys/{id}",
+    "methods": [
+      "DELETE"
+    ]
+  },
+  {
+    "file": "src/app/api/account/currency/route.ts",
+    "route": "/api/account/currency",
+    "methods": [
+      "PATCH"
+    ]
+  },
+  {
+    "file": "src/app/api/account/invitations/route.ts",
+    "route": "/api/account/invitations",
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "src/app/api/account/invitations/[id]/route.ts",
+    "route": "/api/account/invitations/{id}",
+    "methods": [
+      "DELETE"
+    ]
+  },
+  {
+    "file": "src/app/api/account/members/route.ts",
+    "route": "/api/account/members",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "src/app/api/account/members/[userId]/route.ts",
+    "route": "/api/account/members/{userId}",
+    "methods": [
+      "PATCH",
+      "DELETE"
+    ]
+  },
+  {
+    "file": "src/app/api/account/route.ts",
+    "route": "/api/account",
+    "methods": [
+      "GET",
+      "PATCH"
+    ]
+  },
+  {
+    "file": "src/app/api/account/transfer-ownership/route.ts",
+    "route": "/api/account/transfer-ownership",
+    "methods": [
+      "POST"
+    ]
+  },
+  {
+    "file": "src/app/api/ai/autoreply/[conversationId]/route.ts",
+    "route": "/api/ai/autoreply/{conversationId}",
+    "methods": [
+      "POST"
+    ]
+  },
+  {
+    "file": "src/app/api/ai/config/route.ts",
+    "route": "/api/ai/config",
+    "methods": [
+      "GET",
+      "DELETE",
+      "POST"
+    ]
+  },
+  {
+    "file": "src/app/api/ai/draft/route.ts",
+    "route": "/api/ai/draft",
+    "methods": [
+      "POST"
+    ]
+  },
+  {
+    "file": "src/app/api/ai/knowledge/reindex/route.ts",
+    "route": "/api/ai/knowledge/reindex",
+    "methods": [
+      "POST"
+    ]
+  },
+  {
+    "file": "src/app/api/ai/knowledge/route.ts",
+    "route": "/api/ai/knowledge",
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "src/app/api/ai/knowledge/[id]/route.ts",
+    "route": "/api/ai/knowledge/{id}",
+    "methods": [
+      "GET",
+      "DELETE",
+      "PATCH"
+    ]
+  },
+  {
+    "file": "src/app/api/ai/playground/route.ts",
+    "route": "/api/ai/playground",
+    "methods": [
+      "POST"
+    ]
+  },
+  {
+    "file": "src/app/api/ai/test/route.ts",
+    "route": "/api/ai/test",
+    "methods": [
+      "POST"
+    ]
+  },
+  {
+    "file": "src/app/api/ai/usage/route.ts",
+    "route": "/api/ai/usage",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "src/app/api/auth/[...all]/route.ts",
+    "route": "/api/auth/{...all}",
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "src/app/api/auth-context/route.ts",
+    "route": "/api/auth-context",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "src/app/api/automations/cron/route.ts",
+    "route": "/api/automations/cron",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "src/app/api/automations/engine/route.ts",
+    "route": "/api/automations/engine",
+    "methods": [
+      "POST"
+    ]
+  },
+  {
+    "file": "src/app/api/automations/resources/route.ts",
+    "route": "/api/automations/resources",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "src/app/api/automations/route.ts",
+    "route": "/api/automations",
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "src/app/api/automations/[id]/duplicate/route.ts",
+    "route": "/api/automations/{id}/duplicate",
+    "methods": [
+      "POST"
+    ]
+  },
+  {
+    "file": "src/app/api/automations/[id]/logs/route.ts",
+    "route": "/api/automations/{id}/logs",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "src/app/api/automations/[id]/route.ts",
+    "route": "/api/automations/{id}",
+    "methods": [
+      "GET",
+      "PATCH",
+      "DELETE"
+    ]
+  },
+  {
+    "file": "src/app/api/broadcasts/audience/route.ts",
+    "route": "/api/broadcasts/audience",
+    "methods": [
+      "POST"
+    ]
+  },
+  {
+    "file": "src/app/api/broadcasts/route.ts",
+    "route": "/api/broadcasts",
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "src/app/api/broadcasts/[id]/route.ts",
+    "route": "/api/broadcasts/{id}",
+    "methods": [
+      "GET",
+      "DELETE"
+    ]
+  },
+  {
+    "file": "src/app/api/contacts/duplicate/route.ts",
+    "route": "/api/contacts/duplicate",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "src/app/api/contacts/import/route.ts",
+    "route": "/api/contacts/import",
+    "methods": [
+      "POST"
+    ]
+  },
+  {
+    "file": "src/app/api/contacts/route.ts",
+    "route": "/api/contacts",
+    "methods": [
+      "GET",
+      "POST",
+      "DELETE"
+    ]
+  },
+  {
+    "file": "src/app/api/contacts/[id]/custom-values/route.ts",
+    "route": "/api/contacts/{id}/custom-values",
+    "methods": [
+      "GET",
+      "PUT"
+    ]
+  },
+  {
+    "file": "src/app/api/contacts/[id]/deals/route.ts",
+    "route": "/api/contacts/{id}/deals",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "src/app/api/contacts/[id]/notes/route.ts",
+    "route": "/api/contacts/{id}/notes",
+    "methods": [
+      "GET",
+      "POST",
+      "DELETE"
+    ]
+  },
+  {
+    "file": "src/app/api/contacts/[id]/route.ts",
+    "route": "/api/contacts/{id}",
+    "methods": [
+      "GET",
+      "PATCH"
+    ]
+  },
+  {
+    "file": "src/app/api/contacts/[id]/tags/route.ts",
+    "route": "/api/contacts/{id}/tags",
+    "methods": [
+      "GET",
+      "POST",
+      "DELETE"
+    ]
+  },
+  {
+    "file": "src/app/api/dashboard/route.ts",
+    "route": "/api/dashboard",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "src/app/api/deals/options/route.ts",
+    "route": "/api/deals/options",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "src/app/api/deals/route.ts",
+    "route": "/api/deals",
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "src/app/api/deals/[id]/route.ts",
+    "route": "/api/deals/{id}",
+    "methods": [
+      "PATCH",
+      "DELETE"
+    ]
+  },
+  {
+    "file": "src/app/api/flows/cron/route.ts",
+    "route": "/api/flows/cron",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "src/app/api/flows/route.ts",
+    "route": "/api/flows",
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "src/app/api/flows/templates/route.ts",
+    "route": "/api/flows/templates",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "src/app/api/flows/[id]/activate/route.ts",
+    "route": "/api/flows/{id}/activate",
+    "methods": [
+      "POST"
+    ]
+  },
+  {
+    "file": "src/app/api/flows/[id]/route.ts",
+    "route": "/api/flows/{id}",
+    "methods": [
+      "GET",
+      "PUT",
+      "DELETE"
+    ]
+  },
+  {
+    "file": "src/app/api/flows/[id]/runs/route.ts",
+    "route": "/api/flows/{id}/runs",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "src/app/api/inbox/conversations/route.ts",
+    "route": "/api/inbox/conversations",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "src/app/api/inbox/conversations/[id]/messages/route.ts",
+    "route": "/api/inbox/conversations/{id}/messages",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "src/app/api/inbox/conversations/[id]/route.ts",
+    "route": "/api/inbox/conversations/{id}",
+    "methods": [
+      "GET",
+      "PATCH"
+    ]
+  },
+  {
+    "file": "src/app/api/inbox/poll/route.ts",
+    "route": "/api/inbox/poll",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "src/app/api/invitations/[token]/peek/route.ts",
+    "route": "/api/invitations/{token}/peek",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "src/app/api/invitations/[token]/redeem/route.ts",
+    "route": "/api/invitations/{token}/redeem",
+    "methods": [
+      "POST"
+    ]
+  },
+  {
+    "file": "src/app/api/notifications/route.ts",
+    "route": "/api/notifications",
+    "methods": [
+      "GET",
+      "PATCH"
+    ]
+  },
+  {
+    "file": "src/app/api/openapi/route.ts",
+    "route": "/api/openapi",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "src/app/api/pipelines/route.ts",
+    "route": "/api/pipelines",
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "src/app/api/pipelines/[id]/route.ts",
+    "route": "/api/pipelines/{id}",
+    "methods": [
+      "GET",
+      "PATCH",
+      "POST",
+      "DELETE"
+    ]
+  },
+  {
+    "file": "src/app/api/presence/route.ts",
+    "route": "/api/presence",
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "src/app/api/quick-replies/route.ts",
+    "route": "/api/quick-replies",
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "src/app/api/quick-replies/[id]/route.ts",
+    "route": "/api/quick-replies/{id}",
+    "methods": [
+      "PATCH",
+      "DELETE"
+    ]
+  },
+  {
+    "file": "src/app/api/settings/custom-fields/route.ts",
+    "route": "/api/settings/custom-fields",
+    "methods": [
+      "GET",
+      "POST",
+      "PATCH",
+      "DELETE"
+    ]
+  },
+  {
+    "file": "src/app/api/settings/overview/route.ts",
+    "route": "/api/settings/overview",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "src/app/api/settings/tags/route.ts",
+    "route": "/api/settings/tags",
+    "methods": [
+      "GET",
+      "POST",
+      "DELETE"
+    ]
+  },
+  {
+    "file": "src/app/api/settings/templates/route.ts",
+    "route": "/api/settings/templates",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "src/app/api/unread-counts/route.ts",
+    "route": "/api/unread-counts",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "src/app/api/uploads/[bucket]/route.ts",
+    "route": "/api/uploads/{bucket}",
+    "methods": [
+      "POST",
+      "DELETE"
+    ]
+  },
+  {
+    "file": "src/app/api/v1/broadcasts/route.ts",
+    "route": "/api/v1/broadcasts",
+    "methods": [
+      "POST"
+    ]
+  },
+  {
+    "file": "src/app/api/v1/broadcasts/[id]/route.ts",
+    "route": "/api/v1/broadcasts/{id}",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "src/app/api/v1/contacts/route.ts",
+    "route": "/api/v1/contacts",
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "src/app/api/v1/contacts/[id]/route.ts",
+    "route": "/api/v1/contacts/{id}",
+    "methods": [
+      "GET",
+      "PATCH"
+    ]
+  },
+  {
+    "file": "src/app/api/v1/conversations/route.ts",
+    "route": "/api/v1/conversations",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "src/app/api/v1/conversations/[id]/messages/route.ts",
+    "route": "/api/v1/conversations/{id}/messages",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "src/app/api/v1/conversations/[id]/route.ts",
+    "route": "/api/v1/conversations/{id}",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "src/app/api/v1/me/route.ts",
+    "route": "/api/v1/me",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "src/app/api/v1/messages/route.ts",
+    "route": "/api/v1/messages",
+    "methods": [
+      "POST"
+    ]
+  },
+  {
+    "file": "src/app/api/v1/webhooks/route.ts",
+    "route": "/api/v1/webhooks",
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "src/app/api/v1/webhooks/[id]/route.ts",
+    "route": "/api/v1/webhooks/{id}",
+    "methods": [
+      "GET",
+      "PATCH",
+      "DELETE"
+    ]
+  },
+  {
+    "file": "src/app/api/whatsapp/broadcast/route.ts",
+    "route": "/api/whatsapp/broadcast",
+    "methods": [
+      "POST"
+    ]
+  },
+  {
+    "file": "src/app/api/whatsapp/broadcast/[id]/resume/route.ts",
+    "route": "/api/whatsapp/broadcast/{id}/resume",
+    "methods": [
+      "POST"
+    ]
+  },
+  {
+    "file": "src/app/api/whatsapp/config/details/route.ts",
+    "route": "/api/whatsapp/config/details",
+    "methods": [
+      "GET",
+      "PATCH"
+    ]
+  },
+  {
+    "file": "src/app/api/whatsapp/config/route.ts",
+    "route": "/api/whatsapp/config",
+    "methods": [
+      "GET",
+      "POST",
+      "DELETE"
+    ]
+  },
+  {
+    "file": "src/app/api/whatsapp/config/verify-registration/route.ts",
+    "route": "/api/whatsapp/config/verify-registration",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "src/app/api/whatsapp/media/[mediaId]/route.ts",
+    "route": "/api/whatsapp/media/{mediaId}",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "src/app/api/whatsapp/react/route.ts",
+    "route": "/api/whatsapp/react",
+    "methods": [
+      "POST"
+    ]
+  },
+  {
+    "file": "src/app/api/whatsapp/send/route.ts",
+    "route": "/api/whatsapp/send",
+    "methods": [
+      "POST"
+    ]
+  },
+  {
+    "file": "src/app/api/whatsapp/templates/submit/route.ts",
+    "route": "/api/whatsapp/templates/submit",
+    "methods": [
+      "POST"
+    ]
+  },
+  {
+    "file": "src/app/api/whatsapp/templates/sync/route.ts",
+    "route": "/api/whatsapp/templates/sync",
+    "methods": [
+      "POST"
+    ]
+  },
+  {
+    "file": "src/app/api/whatsapp/templates/[id]/route.ts",
+    "route": "/api/whatsapp/templates/{id}",
+    "methods": [
+      "PATCH",
+      "DELETE"
+    ]
+  },
+  {
+    "file": "src/app/api/whatsapp/webhook/route.ts",
+    "route": "/api/whatsapp/webhook",
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  }
+]

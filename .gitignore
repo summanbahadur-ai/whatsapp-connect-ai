@@ -1,0 +1,29 @@
+# Private configuration
+.env
+.env.*
+!.env.example
+!.env.local.example
+application-private.yml
+application-private.yaml
+*.pem
+*.key
+
+# Runtime and tooling output
+local-data/
+.cache/
+node_modules/
+.next/
+target/
+dist/
+coverage/
+playwright-report/
+test-results/
+*.tsbuildinfo
+*.log
+
+# Editors and OS files
+.idea/
+.vscode/
+Thumbs.db
+.DS_Store
+~$*
