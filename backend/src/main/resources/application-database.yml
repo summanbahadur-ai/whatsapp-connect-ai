@@ -1,0 +1,15 @@
+wc:
+  database:
+    url: ${WC_DB_URL}
+    migration:
+      username: wc_owner
+      password: ${WC_OWNER_PASSWORD}
+    app:
+      username: wc_app
+      password: ${WC_APP_PASSWORD}
+    auth:
+      username: wc_auth
+      password: ${WC_AUTH_PASSWORD}
+    worker:
+      username: wc_worker
+      password: ${WC_WORKER_PASSWORD}

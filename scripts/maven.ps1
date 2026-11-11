@@ -25,8 +25,14 @@ $oldPath = $env:PATH
 $oldMavenHome = $env:MAVEN_USER_HOME
 $oldTemp = $env:TEMP
 $oldTmp = $env:TMP
+$oldTestPassword = $env:CP02_TEST_ADMIN_PASSWORD
 $result = 1
 try {
+    if ($MavenArgs -contains 'verify' -or $MavenArgs -contains 'integration-test') {
+        & (Join-Path $PSScriptRoot 'test-postgres.ps1')
+        $privateFixture = Get-Content (Join-Path $projectRoot '.cache/cp02-test-admin.json') -Raw | ConvertFrom-Json
+        $env:CP02_TEST_ADMIN_PASSWORD = $privateFixture.password
+    }
     $env:JAVA_HOME = $jdkHome
     $env:PATH = (Join-Path $jdkHome 'bin') + ';' + $env:PATH
     $env:MAVEN_USER_HOME = Join-Path $projectRoot '.cache\maven-home'
@@ -47,5 +53,6 @@ try {
     $env:MAVEN_USER_HOME = $oldMavenHome
     $env:TEMP = $oldTemp
     $env:TMP = $oldTmp
+    $env:CP02_TEST_ADMIN_PASSWORD = $oldTestPassword
 }
 exit $result

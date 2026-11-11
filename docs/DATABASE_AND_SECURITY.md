@@ -5,8 +5,8 @@
 - Existing app: `omni_connect`. New app: proposed `whatsapp_connect_ai`.
 - Same installed PostgreSQL 18 server is acceptable; separate database, roles,
   file roots and environment settings are required. Tests use another disposable DB.
-- Create nothing in the database until CP03. Do not reuse the chat-shared password
-  or copy `.env.local`; obtain/set local connection details privately at that stage.
+- Database foundation is authorized in CP02; use database/README.md. Do not reuse the chat-shared password
+  or copy `.env.local`; obtain/set local connection details privately during local setup.
 - Schema references copied to `docs/reference/source-sql/` are read-only design
   input. **Never execute them wholesale against the new database.** They contain
   the old identity/session/provisioning model and grants that require adaptation.

@@ -1,7 +1,7 @@
 # Java backend — checkpoint CP01
 
 Java **25**, Spring Boot **4.1.2**, Maven **3.9.12** (Wrapper **3.3.4**).
-Only health probes are public. Business APIs/login/database are not implemented yet.
+Only health probes are public. Database infrastructure exists under the database profile; business APIs and login are not implemented yet.
 
 From a PowerShell terminal in `D:\whatsapp-connect-ai`:
 
@@ -35,5 +35,10 @@ VS Code: open the whole `D:\whatsapp-connect-ai` folder, install recommended Jav
 and Spring extension packs, and let Java import `backend/pom.xml`. This machine's
 JDK settings are local/ignored; extension recommendations are shared in Git.
 
-Stop the backend with **Ctrl+C**. New database setup is CP02 and requires the next
-user review/continue. Do not run the reference SQL snapshots as migrations.
+Stop the backend with **Ctrl+C**. Follow ../database/README.md for CP02 local database setup. Do not run the reference SQL snapshots as migrations.
+
+## CP02 database profile
+Follow [database setup](../database/README.md), then run
+scripts/start-backend.ps1 -Database from the project root. Flyway applies new
+migrations automatically. Maven verify includes real isolated PostgreSQL tests;
+mvn test alone does not provide the checkpoint integration checks.

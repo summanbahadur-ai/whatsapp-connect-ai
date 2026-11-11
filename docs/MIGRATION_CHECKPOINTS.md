@@ -82,14 +82,14 @@ returns 401. A successful compile alone is not a database/auth checkpoint.
 Files: database bootstrap/readme, data-source/transaction configuration, Flyway
 V1–V3, `AccountContext`/JDBC integration tests and test database settings.
 
-1. [ ] Confirm new DB/role credentials privately; verify the target is not `omni_connect`.
-2. [ ] Create isolated test DB or Testcontainers configuration and a disposable fixture.
-3. [ ] Write failing migration/RLS/transaction/pool-reuse tests under actual app roles.
-4. [ ] Create new database/roles, Java identity/session tables, reviewed domain schema and grants. Domain tables needed by the dashboard exist before CP07, even while their APIs remain disabled.
-5. [ ] Implement explicit auth/app/worker data sources and transaction-local identity.
-6. [ ] Port only necessary provisioning/profile-sync functions; test rollback/no duplicates.
-7. [ ] Run fresh migration and second no-op migration; test two accounts and rollback.
-8. [ ] Document backup/connection checks, commit and stop.
+1. [x] Confirm new DB/role credentials privately; verify the target is not `omni_connect`.
+2. [x] Create isolated test DB or Testcontainers configuration and a disposable fixture.
+3. [x] Write failing migration/RLS/transaction/pool-reuse tests under actual app roles.
+4. [x] Create new database/roles, Java identity/session tables, reviewed domain schema and grants. Domain tables needed by the dashboard exist before CP07, even while their APIs remain disabled.
+5. [x] Implement explicit auth/app/worker data sources and transaction-local identity.
+6. [x] Port only necessary provisioning/profile-sync functions; test rollback/no duplicates.
+7. [x] Run fresh migration and second no-op migration; test two accounts and rollback.
+8. [x] Documentation and automated checks complete; finish manual database gate, ask before commit/push, and stop.
 
 Manual gate: pgAdmin shows the new database and Flyway history. The original
 database has not changed. No contacts/messages are imported.

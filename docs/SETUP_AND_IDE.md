@@ -26,7 +26,7 @@ exists. Set both project SDK and Maven runner JDK to **25**. Preview features of
 2. Install/configure a JDK 25 if absent. Do not merely change the project label.
 3. Check JAVA_HOME points to that JDK and the terminal/Maven runner use it.
 4. Keep Node/npm compatible with the existing frontend's pinned dependencies.
-5. Confirm PostgreSQL 18 is running. Create the new database only at CP03.
+5. Confirm PostgreSQL 18 is running. CP02 creates a separate database; follow ../database/README.md.
 6. Generate a pinned Maven Wrapper (proposed Maven 3.9.x); commit wrapper files.
    Backend dependencies must resolve and compile under Java 25.
 7. For real PostgreSQL tests, choose Testcontainers with Docker available, or an
