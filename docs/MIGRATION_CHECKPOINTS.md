@@ -117,13 +117,13 @@ reaches Java on 8081. Signing in is not claimed until CP04/05 pass.
 Files: auth/account DTOs/controllers/services/repositories, password encoder,
 signup auth-adapter methods and SQL integration/browser tests.
 
-1. [ ] Capture actual signup UI calls and establish the target request/response contract.
-2. [ ] Write failing duplicate-email, invalid-password and provisioning-rollback tests.
-3. [ ] Implement password hashing and atomic identity/profile/account/default creation.
-4. [ ] Add CSRF acquisition and safe signup fetch through the frontend adapter.
-5. [ ] Test new user, duplicate user, failure halfway through defaults and two concurrent signups.
-6. [ ] Verify stored hashes are not plaintext and responses/logs contain no credentials.
-7. [ ] Run all foundation regressions, commit and stop.
+1. [x] Capture actual signup UI calls and establish the target request/response contract.
+2. [x] Write failing duplicate-email, invalid-password and provisioning-rollback tests.
+3. [x] Implement password hashing and atomic identity/profile/account/default creation.
+4. [x] Add CSRF acquisition and safe signup fetch through the frontend adapter.
+5. [x] Test new user, duplicate user, failure halfway through defaults and two concurrent signups.
+6. [x] Verify stored hashes are not plaintext and responses/logs contain no credentials.
+7. [x] Signup accepted; regressions passed; user authorized CP04/CP05 commit, main merge and push.
 
 Manual gate: signup creates exactly one user/account/profile and expected defaults
 in the new DB. A failed signup leaves no partially usable identity/account.
@@ -133,13 +133,13 @@ in the new DB. A failed signup leaves no partially usable identity/account.
 Files: SecurityFilterChain/session configuration, auth endpoints, Java-auth client
 adapter, `use-auth` hook, protected layout/proxy checks and browser tests.
 
-1. [ ] Write failing tests for valid/invalid login, forged/expired cookie and CSRF rejection.
-2. [ ] Implement Java authentication/session rotation/persistence and auth-context lookup.
-3. [ ] Replace remaining Better Auth UI calls while preserving existing login visuals.
-4. [ ] Wire header/sidebar/profile/account permissions to the trusted Java response.
-5. [ ] Implement logout/session revocation, expiry and Java-backed page authorization.
-6. [ ] Test browser refresh, two tabs, server restart, bad password, logout/back/reload and removed membership.
-7. [ ] Run role matrix and all previous regressions; commit and stop.
+1. [x] Write failing tests for valid/invalid login, forged/expired cookie and CSRF rejection.
+2. [x] Implement Java authentication/session rotation/persistence and auth-context lookup.
+3. [x] Replace remaining Better Auth UI calls while preserving existing login visuals.
+4. [x] Wire header/sidebar/profile/account permissions to the trusted Java response.
+5. [x] Implement logout/session revocation, expiry and Java-backed page authorization.
+6. [x] Test browser refresh, two tabs, server restart, bad password, logout/back/reload and removed membership.
+7. [x] Role matrix/regressions passed; user accepted CP05 and authorized commit, main merge and push.
 
 Manual gate: signup/login opens dashboard shell; reload stays signed in; signout
 blocks protected data. Dashboard business charts may remain explicitly pending.

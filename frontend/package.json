@@ -27,7 +27,8 @@
     "typecheck": "tsc --noEmit",
     "test": "node --test tests/unit/*.test.mjs",
     "test:browser": "playwright test",
-    "test:java": "playwright test --config playwright.live.config.ts"
+    "test:java": "playwright test --config playwright.live.config.ts",
+    "test:signup": "playwright test --config playwright.signup.config.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",

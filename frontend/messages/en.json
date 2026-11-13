@@ -1909,13 +1909,16 @@
     "emailLabel": "Email",
     "emailPlaceholder": "you@example.com",
     "passwordLabel": "Password",
-    "passwordPlaceholder": "At least 6 characters",
+    "passwordPlaceholder": "At least 8 characters",
     "confirmPasswordLabel": "Confirm password",
     "confirmPasswordPlaceholder": "Repeat your password",
     "creating": "Creating account...",
     "submit": "Create account",
     "haveAccount": "Already have an account?",
-    "signIn": "Sign in"
+    "signIn": "Sign in",
+    "createdPendingLogin": "Your account has been created. You can now sign in.",
+    "backToLogin": "Back to sign in",
+    "invitationPending": "Invitations are not available yet. Please wait for account sharing to be enabled."
   },
   "ForgotPasswordPage": {
     "checkEmailTitle": "Check your email",

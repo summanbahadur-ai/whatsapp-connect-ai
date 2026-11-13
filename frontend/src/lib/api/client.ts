@@ -63,7 +63,11 @@ export async function apiResult<T>(
           status,
           message:
             typeof body.error === "string" ? body.error : "Request failed.",
-          ...(status === 409 ? { code: "23505" } : {}),
+          ...(typeof body.code === "string"
+            ? { code: body.code }
+            : status === 409
+              ? { code: "23505" }
+              : {}),
         },
       };
     return { data: body as T, error: null };

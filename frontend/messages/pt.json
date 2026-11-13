@@ -1897,13 +1897,16 @@
     "emailLabel": "E-mail",
     "emailPlaceholder": "you@example.com",
     "passwordLabel": "Senha",
-    "passwordPlaceholder": "Pelo menos 6 caracteres",
+    "passwordPlaceholder": "Pelo menos 8 caracteres",
     "confirmPasswordLabel": "Confirmar senha",
     "confirmPasswordPlaceholder": "Repita sua senha",
     "creating": "Criando conta...",
     "submit": "Criar conta",
     "haveAccount": "Já tem uma conta?",
-    "signIn": "Entrar"
+    "signIn": "Entrar",
+    "createdPendingLogin": "A sua conta foi criada. Já pode iniciar sessão.",
+    "backToLogin": "Voltar ao início de sessão",
+    "invitationPending": "Os convites ainda não estão disponíveis."
   },
   "ForgotPasswordPage": {
     "checkEmailTitle": "Verifique seu e-mail",

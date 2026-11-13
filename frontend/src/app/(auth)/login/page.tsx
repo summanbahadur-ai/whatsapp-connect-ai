@@ -1,5 +1,6 @@
 "use client";
 
+import { useHydrated } from "@/hooks/use-hydrated";
 import { Suspense, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
@@ -32,6 +33,7 @@ export default function LoginPage() {
 }
 
 function LoginPageInner() {
+  const ready = useHydrated();
   const searchParams = useSearchParams();
   // Forwarded from `/join/<token>` when the visitor already has an
   // account. After a successful sign-in we send them to the join
@@ -103,6 +105,8 @@ function LoginPageInner() {
               <Input
                 id="email"
                 type="email"
+                autoComplete="username"
+                maxLength={254}
                 placeholder={t('emailPlaceholder')}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -126,6 +130,8 @@ function LoginPageInner() {
               <Input
                 id="password"
                 type="password"
+                autoComplete="current-password"
+                maxLength={72}
                 placeholder={t('passwordPlaceholder')}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -136,7 +142,7 @@ function LoginPageInner() {
 
             <Button
               type="submit"
-              disabled={loading}
+              disabled={!ready || loading}
               className="mt-2 h-10 w-full bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-50"
             >
               {loading ? t('signingIn') : t('signIn')}

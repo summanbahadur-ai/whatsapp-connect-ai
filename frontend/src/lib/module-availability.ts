@@ -4,7 +4,7 @@ export const modules = [
     path: "/signup",
     name: "Create account",
     checkpoint: "CP04",
-    available: false,
+    available: true,
   },
   {
     path: "/forgot-password",

@@ -79,14 +79,14 @@ fixed search_path, minimal grants and no arbitrary account provisioning by users
 
 ## Explicit Java auth endpoints and frontend adapter
 
-These are proposed target endpoints, not already working routes:
+Signup, CSRF, signin, get-session, signout and auth-context are implemented through CP05. Recovery/change/verification routes remain proposed:
 
 | Method/path | Request/result |
 | --- | --- |
 | GET `/api/auth/csrf` | Returns `{token, headerName}` with private/no-store; creates/materializes a CSRF token for the browser |
-| POST `/api/auth/sign-up/email` | `{name,email,password}`; 201 `{user}` plus session cookie if source auto-login behavior is retained |
+| POST `/api/auth/sign-up/email` | `{name,email,password}`; 201 `{user}`; no auto-login or session |
 | POST `/api/auth/sign-in/email` | `{email,password}`; 200 `{user}`, rotates cookie; invalid credentials 401 |
-| GET `/api/auth/get-session` | `{user,session}` or JSON `null` when anonymous, matching adapter expectation; never returns password/session secret |
+| GET `/api/auth/get-session` | `{user,profile,account}` when authenticated;401 when anonymous/expired; never returns password/session secret |
 | POST `/api/auth/sign-out` | 200 `{success:true}`; invalidates server session and cookie |
 | POST `/api/auth/request-password-reset` | `{email,redirectTo?}`; generic 200 response without user enumeration; allowed redirects only |
 | POST `/api/auth/reset-password` | `{token,newPassword}`; single-use token; expires/reset-revokes sessions |
@@ -148,3 +148,37 @@ locks on appropriate dedicated connections. Persist workflow/broadcast progress.
 Test process crash/restart and two concurrent workers. External sends cannot be
 made exactly-once by a database transaction alone: record unknown outcomes and
 reconcile them rather than claiming a retry is safe after every network timeout.
+
+## CP04 implemented contract
+Signup and CSRF are implemented; see api/auth.openapi.json. Signup returns201
+{user} without auto-login; CP05 adds sessions. Safe auth errors use {error,code}
+with a string message (security403 may contain only error). The adapter preserves
+existing UI result shape. Passwords use {bcrypt}, cost12,8+ characters/72 UTF-8
+bytes maximum. The request record redacts its diagnostics.
+
+WC_CSRF is HttpOnly/SameSite=Lax. Spring's masked-token handler stays enabled;
+the browser obtains token/headerName from the no-store JSON endpoint and never
+reads the cookie. POST signup requires a configured exact Origin in addition
+to CSRF. WC_BROWSER_ORIGINS configures the comma-separated browser origins;
+defaults are http://127.0.0.1:3001 and http://localhost:3001.
+All other business endpoints remain denied. No global CSRF/CORS bypass was added.
+
+## CP05 implemented session behavior
+
+Spring Session JDBC uses wc_auth and identity.spring_session plus
+identity.spring_session_attributes, provisioned by V1. No new SQL or manual steps.
+Only the user UUID, auth time and principal index are stored; credentials, account
+objects and permissions are never serialized into the session. Every request with
+a valid session reloads user/membership using wc_auth and transaction-local wc_app
+RLS. Membership removal or user deletion invalidates the session; role changes are
+returned from the database immediately. Login replaces any preexisting session.
+
+WC_SESSION is HttpOnly/SameSite=Lax/Path=/, seven-day cookie and absolute lifetime,
+30-minute idle expiry. Direct HTTPS automatically sets Secure; a TLS-terminating
+proxy must set wc.auth.secure-cookies=true (WC_AUTH_SECURE_COOKIES=true). Production
+proxy/HTTPS configuration is a later operations checkpoint. Local HTTP stays usable.
+POST login/logout require the same exact-Origin and masked CSRF protection as signup.
+Login clears WC_CSRF; the adapter obtains a fresh token before subsequent writes.
+Logout removes the persisted session and cookie. Anonymous auth reads return401.
+The UI and Next server layout both consult Java; no cookie-presence-only authorization.
+Business endpoints remain denied until their own modules migrate. See checkpoints/CP05.md.

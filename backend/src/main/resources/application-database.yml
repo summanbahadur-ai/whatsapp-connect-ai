@@ -13,3 +13,5 @@ wc:
     worker:
       username: wc_worker
       password: ${WC_WORKER_PASSWORD}
+  auth:
+    allowed-origins: ${WC_BROWSER_ORIGINS:http://localhost:3001,http://127.0.0.1:3001}

@@ -11,14 +11,6 @@ test("existing login renders and reaches the backend through the same origin", a
   await expect(page.locator("input[type=password]")).toBeVisible();
   await page.getByRole("button", { name: "Test Java connection" }).click();
   await expect(page.getByRole("status")).toHaveText("Java backend connected.");
-  await page.locator("input[type=email]").fill("cp03@example.invalid");
-  await page.locator("input[type=password]").fill("not-a-real-password");
-  await page.getByRole("button", { name: "Sign in", exact: true }).click();
-  await expect(
-    page.getByText(
-      "This feature is not available yet. Java authentication is being migrated.",
-    ),
-  ).toBeVisible();
   expect(new URL(page.url()).pathname).toBe("/login");
   expect(errors).toEqual([]);
   await page.screenshot({ path: "../.cache/cp03-login.png", fullPage: true });
@@ -32,15 +24,8 @@ test("unfinished pages stay gated and do not call their business APIs", async ({
       calls.push(request.url());
   });
   for (const path of [
-    "/dashboard",
-    "/contacts",
-    "/inbox",
-    "/settings",
-    "/flows/example",
-    "/signup",
     "/forgot-password",
     "/join/example",
-    "/api-docs",
   ]) {
     await page.goto(path);
     await expect(

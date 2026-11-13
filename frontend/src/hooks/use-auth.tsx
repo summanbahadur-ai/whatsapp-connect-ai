@@ -156,6 +156,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           signal: controller.signal,
         });
         const body = await response.json();
+        if (response.status === 401) { window.location.replace('/login'); return; }
         if (!response.ok)
           throw new Error(body.error ?? 'Unable to load account.');
         const profile = body.profile as Profile | null;
@@ -186,7 +187,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       active = false;
       controller.abort();
     };
-  }, [userId, refresh]);
+  }, [userId, refresh, session.data]);
   // Never expose a previous identity's permissions while a new fetch is pending.
   const current = snapshot?.userId === userId ? snapshot : null;
   const profile = current?.profile ?? null;

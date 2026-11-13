@@ -72,3 +72,23 @@ remove each entry when migrating/testing that module. New transport/gating files
 are not covered. Do not describe a warning-bearing lint run as warning-free.
 
 See ../docs/checkpoints/CP03.md for exact observed results and remaining findings.
+
+## CP04 signup
+Signup is enabled at /signup. It gets CSRF JSON, posts same-origin to Java,
+and shows account creation without pretending to log in. Existing user/date
+types are adapted; passwords are cleared after success. Inputs wait for React
+readiness. Login and invitations remain unavailable in this checkpoint.
+Use Node24 for the verification commands (native TypeScript unit imports).
+Run the real signup browser gate through the Java disposable-database harness:
+scripts/maven.ps1 verify "-Dit.test=SignupBrowserCheck" from project root.
+See ../docs/checkpoints/CP04.md and ../docs/api/auth.openapi.json.
+
+## CP05 login and sessions
+Existing login form calls Java through same-origin rewrites with fresh masked CSRF.
+The Next protected layout forwards only WC_SESSION to Java, with no-store, and
+redirects unauthenticated visitors. AuthProvider rechecks on refresh/focus/pageshow
+and every30seconds while visible. Existing sidebar/header show the trusted profile
+and account role. Unfinished module pages stay gated; unread badge polling stays
+disabled until its endpoint migrates. No password/session token is in localStorage.
+The existing disposable SignupBrowserCheck now covers signup plus login/logout,
+refresh, two tabs, protected navigation and cookie flags.

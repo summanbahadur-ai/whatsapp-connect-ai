@@ -4,6 +4,7 @@ import { Suspense, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
+import { useHydrated } from "@/hooks/use-hydrated";
 import { authClient } from "@/lib/auth/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -39,11 +40,16 @@ function SignupPageInner() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-
+  const [created, setCreated] = useState(false);
+  const hydrated = useHydrated();
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
+    if (inviteToken) {
+      setError(t("invitationPending"));
+      return;
+    }
 
     if (password !== confirmPassword) {
       setError(t("passwordsMismatch"));
@@ -64,14 +70,16 @@ function SignupPageInner() {
     });
 
     if (error) {
-      setError(error.message ?? 'Unable to create account.');
+      setError(error.message ?? "Unable to create account.");
       setLoading(false);
       return;
     }
 
-    window.location.href = inviteToken ? `/join/${encodeURIComponent(inviteToken)}` : '/dashboard';
+    setPassword("");
+    setConfirmPassword("");
+    setLoading(false);
+    setCreated(true);
   };
-
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -92,81 +100,115 @@ function SignupPageInner() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSignup} className="flex flex-col gap-4">
-            {error && (
-              <div className="rounded-lg border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm text-red-400">
-                {error}
-              </div>
-            )}
-
-            <div className="flex flex-col gap-2">
-              <Label htmlFor="fullName" className="text-muted-foreground">
-                {t("fullNameLabel")}
-              </Label>
-              <Input
-                id="fullName"
-                type="text"
-                placeholder={t("fullNamePlaceholder")}
-                value={fullName}
-                onChange={(e) => setFullName(e.target.value)}
-                required
-                className="border-border bg-muted text-foreground placeholder:text-muted-foreground focus-visible:border-primary focus-visible:ring-primary/20"
-              />
-            </div>
-
-            <div className="flex flex-col gap-2">
-              <Label htmlFor="email" className="text-muted-foreground">
-                {t("emailLabel")}
-              </Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder={t("emailPlaceholder")}
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="border-border bg-muted text-foreground placeholder:text-muted-foreground focus-visible:border-primary focus-visible:ring-primary/20"
-              />
-            </div>
-
-            <div className="flex flex-col gap-2">
-              <Label htmlFor="password" className="text-muted-foreground">
-                {t("passwordLabel")}
-              </Label>
-              <Input
-                id="password"
-                type="password"
-                placeholder={t("passwordPlaceholder")}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                className="border-border bg-muted text-foreground placeholder:text-muted-foreground focus-visible:border-primary focus-visible:ring-primary/20"
-              />
-            </div>
-
-            <div className="flex flex-col gap-2">
-              <Label htmlFor="confirmPassword" className="text-muted-foreground">
-                {t("confirmPasswordLabel")}
-              </Label>
-              <Input
-                id="confirmPassword"
-                type="password"
-                placeholder={t("confirmPasswordPlaceholder")}
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                required
-                className="border-border bg-muted text-foreground placeholder:text-muted-foreground focus-visible:border-primary focus-visible:ring-primary/20"
-              />
-            </div>
-
-            <Button
-              type="submit"
-              disabled={loading}
-              className="mt-2 h-10 w-full bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-50"
+          {inviteToken && (
+            <p role="status" className="mb-4 text-sm text-muted-foreground">
+              {t("invitationPending")}
+            </p>
+          )}
+          {created ? (
+            <div
+              role="status"
+              className="rounded-lg border border-border bg-muted p-4 text-sm"
             >
-              {loading ? t("creating") : t("submit")}
-            </Button>
-          </form>
+              <p>{t("createdPendingLogin")}</p>
+              <Link href="/login" className="mt-3 inline-block text-primary">
+                {t("backToLogin")}
+              </Link>
+            </div>
+          ) : (
+            <form onSubmit={handleSignup} className="flex flex-col gap-4">
+              {error && (
+                <div className="rounded-lg border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm text-red-400">
+                  {error}
+                </div>
+              )}
+
+              <div className="flex flex-col gap-2">
+                <Label htmlFor="fullName" className="text-muted-foreground">
+                  {t("fullNameLabel")}
+                </Label>
+                <Input
+                  id="fullName"
+                  autoComplete="name"
+                  maxLength={100}
+                  disabled={!hydrated || loading}
+                  type="text"
+                  placeholder={t("fullNamePlaceholder")}
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                  required
+                  className="border-border bg-muted text-foreground placeholder:text-muted-foreground focus-visible:border-primary focus-visible:ring-primary/20"
+                />
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <Label htmlFor="email" className="text-muted-foreground">
+                  {t("emailLabel")}
+                </Label>
+                <Input
+                  id="email"
+                  autoComplete="email"
+                  maxLength={254}
+                  disabled={!hydrated || loading}
+                  type="email"
+                  placeholder={t("emailPlaceholder")}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className="border-border bg-muted text-foreground placeholder:text-muted-foreground focus-visible:border-primary focus-visible:ring-primary/20"
+                />
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <Label htmlFor="password" className="text-muted-foreground">
+                  {t("passwordLabel")}
+                </Label>
+                <Input
+                  id="password"
+                  autoComplete="new-password"
+                  minLength={8}
+                  maxLength={72}
+                  disabled={!hydrated || loading}
+                  type="password"
+                  placeholder={t("passwordPlaceholder")}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  className="border-border bg-muted text-foreground placeholder:text-muted-foreground focus-visible:border-primary focus-visible:ring-primary/20"
+                />
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <Label
+                  htmlFor="confirmPassword"
+                  className="text-muted-foreground"
+                >
+                  {t("confirmPasswordLabel")}
+                </Label>
+                <Input
+                  id="confirmPassword"
+                  autoComplete="new-password"
+                  minLength={8}
+                  maxLength={72}
+                  disabled={!hydrated || loading}
+                  type="password"
+                  placeholder={t("confirmPasswordPlaceholder")}
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  required
+                  className="border-border bg-muted text-foreground placeholder:text-muted-foreground focus-visible:border-primary focus-visible:ring-primary/20"
+                />
+              </div>
+
+              <Button
+                type="submit"
+                disabled={!hydrated || loading || Boolean(inviteToken)}
+                className="mt-2 h-10 w-full bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-50"
+              >
+                {loading ? t("creating") : t("submit")}
+              </Button>
+            </form>
+          )}
 
           <p className="mt-6 text-center text-sm text-muted-foreground">
             {t("haveAccount")}{" "}

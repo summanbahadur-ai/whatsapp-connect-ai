@@ -1,14 +1,33 @@
 # Migration status and resume instructions
 
-CP03 accepted by user on 11 November 2026. User authorized local commit/merge into
-main and proceeding to CP04. Verification rerun passed: 7 unit/boundary tests,
-6 browser tests, typecheck/build, lint exit0 with60 legacy warnings.
-A separate question about pushing main to GitHub is pending; do not push without
-that answer. ALWAYS ask before each future commit and push.
+Updated:13 November2026.
 
-Next authorized work: CP04 Java signup and owner provisioning. Create
-feature/cp04-java-signup from merged main. Implement signup/CSRF/password hashing,
-atomic credentials/account/profile provisioning and original signup UI wiring.
-Stop after CP04 tests/manual review. Login/session behavior remains CP05.
-No default old-app API or database fallback. See database/README.md and CP04 plan.
-Every SQL structure change requires a new migration plus updated database/schema.sql.
+## Git and approval
+- CP03, CP04 signup and CP05 login/sessions are accepted.
+- User explicitly approved committing the working changes, merging CP05 into main,
+  and pushing the feature branch and main to GitHub on13November2026.
+- Integration uses feature/cp05-java-sessions and main; retain the feature reference.
+- Final Git commit IDs and remote synchronization are verifiable with git log and
+  git ls-remote origin main feature/cp05-java-sessions.
+- ALWAYS ask before each future commit and push; this approval covers this integration.
+- Original repo and omni_connect remain untouched.
+## Accepted checkpoint: CP05
+Java login, PostgreSQL Spring Session JDBC, auth-context, logout and the protected
+React shell implemented. All verification passed;
+read docs/checkpoints/CP05.md and .cache/cp05-* logs before claiming completion.
+No SQL changes: existing V1 session tables reused; database/schema.sql synchronized.
+Dashboard metrics, password recovery/settings and other business modules stay pending.
+
+## Resume
+CP05 verification/evidence completed; local backend8081 and frontend3001 are running.
+Do not start CP06 until user accepts and authorizes it. Future commits/pushes still require explicit approval.
+Run scripts/start-backend.ps1 -Database and scripts/start-frontend.ps1 if needed.
+Review at http://127.0.0.1:3001/login using the account created during accepted CP04.
+
+## Final CP05 verification
+41 Java tests (1 unit+40integration),13 frontend unit tests, typecheck/build,
+six Chrome transport tests and three real Java/PostgreSQL browser tests passed.
+Lint:60 inherited warnings, no errors. Six-path auth OpenAPI valid; SQL synchronized.
+Login URL http://127.0.0.1:3001/login; forwarded health UP and page200 confirmed.
+Session restart/rotation/revocation, idle/absolute expiry and removed membership tested.
+User accepted CP05 and authorized its integration. See checkpoints/CP05.md for exact evidence.
